@@ -1,0 +1,19 @@
+.conversation {
+	margin-top: 20px;
+	padding: 10px 25px 20px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px lightgray;
+
+	&:hover {
+		box-shadow: 3px 3px 3px darkgray;
+	}
+}
+
+.conversation-name {
+	text-align: left;
+}
+
+.conversation-time {
+	text-align: right;
+}
