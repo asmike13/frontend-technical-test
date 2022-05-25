@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { setLangage } from './i18next';
 
-function App() {
-  return (
+setLangage('fr');
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
