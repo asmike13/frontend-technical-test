@@ -1,18 +1,23 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { Conversation, getConversationByUserId } from '../../api/conversationsApi';
 import Conversations from './Conversations';
 
 const ConversationsContainer = () => {
+	const { senderId } = useParams();
+
 	const [conversations, setConversations] = React.useState<Conversation[]>([]);
 
 	React.useEffect(() => {
-		console.log('here')
 		getConversationByUserId({ userId: 1 })
 			.then((response) => {
-				setConversations(response.data as Conversation[]);
-				console.log(response.data)
+				const data = response.data as Conversation[];
+				const filteredData = senderId
+					? data.filter((d) => d.senderId === Number(senderId))
+					: data;
+				setConversations(filteredData as Conversation[]);
 			})
-	}, []);
+	}, [senderId]);
 
 	const props = {
 		conversations,
