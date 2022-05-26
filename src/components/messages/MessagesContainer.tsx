@@ -57,7 +57,9 @@ const MessagesContainer = ({
 		messages: messages.map((m, i) => ({
 			...m,
 			authorNickname: users.find((u) => u.id === m.authorId)?.nickname,
+			// check if the author is sender or recipient
 			from: m.authorId === Number(userId) ? 'sender' : 'recipient' as 'sender' | 'recipient',
+			// If two consecutive message from same author display name once
 			samePrevious: m.authorId === messages[i - 1]?.authorId,
 		})),
 		senderNickname,
