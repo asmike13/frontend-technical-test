@@ -28,5 +28,5 @@ export const postConversationByUserId = (payload: { conversation: ConversationBo
 }
 
 export const deleteConversationById = (payload: { conversationId: number }) => {
-	return axios.delete(`${baseUrl}/conversations/${payload.conversationId}`);
+	return axios.delete(`${baseUrl}/conversation/${payload.conversationId}`);
 }

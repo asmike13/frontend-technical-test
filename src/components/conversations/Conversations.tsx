@@ -5,17 +5,19 @@ import { useTranslation } from 'react-i18next';
 import { Button, Grid } from '@mui/material';
 import { Conversation } from '../../api/conversationsApi';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Avatar from '../commons/avatar/Avatar';
 import { User } from '../../api/usersApi';
 
 import './styles.scss';
 
-interface IConversationsProps {
+export interface IConversationsProps {
 	conversations: Conversation[]
 	userNickname: string
 	onMessagesSelection: (conversation: Conversation) => void
-	onClickNewDiscution: () => void
-	createNewDiscution: (user: User) => void
+	onClickNewConversation: () => void
+	createNewConversation: (user: User) => void
+	deleteConversation: (conversationId: number) => void
 	userId?: string
 	users?: User[]
 }
@@ -24,8 +26,9 @@ const Conversations = ({
 	conversations,
 	userNickname,
 	onMessagesSelection,
-	onClickNewDiscution,
-	createNewDiscution,
+	onClickNewConversation,
+	createNewConversation,
+	deleteConversation,
 	userId,
 	users,
 }: IConversationsProps) => {
@@ -37,12 +40,12 @@ const Conversations = ({
 		<>
 			<div className="header">
 				<FormatListBulletedIcon />
-				<span>{t('conversations')} {userNickname}</span>
+				<span>{t('conversations', { userNickname })}</span>
 			</div>
 
 			<Button onClick={() => {
 				setNewConversation(!newConversation)
-				!newConversation && onClickNewDiscution()
+				!newConversation && onClickNewConversation()
 			}}>
 				{!newConversation && t("add conversation", { name: userNickname })}
 				{newConversation && t("cancel")}
@@ -53,7 +56,7 @@ const Conversations = ({
 					{t("new conversation")}
 					<div className="users-container">
 						{users.map((u) => u.id !== Number(userId) && (
-							<button onClick={() => createNewDiscution(u)} key={u.id}>
+							<button onClick={() => createNewConversation(u)} key={u.id}>
 								<Avatar str={u.nickname} />
 								{u.nickname}
 							</button>
@@ -78,7 +81,14 @@ const Conversations = ({
 
 							<Grid item xs={12} sm={5} className='conversation-time'>
 								<i>{moment(c.lastMessageTimestamp).fromNow()}</i>
+								{c.senderId === Number(userId) && (
+									<DeleteIcon onClick={(e) => {
+										e.preventDefault()
+										deleteConversation(c.id);
+									}} />
+								)}
 							</Grid>
+
 
 						</Grid>
 					</Link>

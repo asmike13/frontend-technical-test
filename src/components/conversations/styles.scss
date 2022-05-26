@@ -16,6 +16,12 @@
 	}
 
 	.conversation-time {
-		text-align: right;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+
+		i {
+			margin-right: 10px;
+		}
 	}
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
-import { Conversation, getConversationByUserId, postConversationByUserId } from '../../api/conversationsApi';
+import { Conversation, deleteConversationById, getConversationByUserId, postConversationByUserId } from '../../api/conversationsApi';
 import { getAllUsers, getUserById, User } from '../../api/usersApi';
 import Conversations from './Conversations';
 
@@ -20,7 +20,7 @@ const ConversationsContainer = ({
 	const [user, setUser] = React.useState<User | undefined>();
 	const [users, setUsers] = React.useState<User[]>([]);
 
-	const onClickNewDiscution = () => {
+	const onClickNewConversation = () => {
 		users.length === 0 && getAllUsers()
 			.then((response) => {
 				const data = response.data as User[];
@@ -28,7 +28,7 @@ const ConversationsContainer = ({
 			})
 	};
 
-	const createNewDiscution = (u: User) => {
+	const createNewConversation = (u: User) => {
 		postConversationByUserId({
 			conversation: {
 				senderId: Number(userId),
@@ -38,6 +38,12 @@ const ConversationsContainer = ({
 				lastMessageTimestamp: moment().unix(),
 			},
 			userId: Number(userId),
+		})
+	};
+
+	const deleteConversation = (conversationId: number) => {
+		deleteConversationById({
+			conversationId,
 		})
 	};
 
@@ -66,8 +72,9 @@ const ConversationsContainer = ({
 		userId,
 		users,
 		onMessagesSelection,
-		onClickNewDiscution,
-		createNewDiscution,
+		onClickNewConversation,
+		createNewConversation,
+		deleteConversation,
 	};
 
 	return <Conversations {...props} />;
