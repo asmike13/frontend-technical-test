@@ -33,11 +33,11 @@ S'il manque une donnée dans l'url on aura un message pour nous dire quoi faire 
 
 ### Remarques
 
-Dans le swagger fourni les delete retournent des 404 donc impossible de test les suppressions de conversation ou message.
+Dans le swagger fourni, les delete retournent des 404 donc impossible de test les suppressions de conversation ou message.
 Je pense que le Middleware empêche l'affichage de la nouvelle conversation lors de l'ajout, quand on restart le back la nouvelle conversation apparait.
 
 ### Amélioration
 
-On peut ajouter un store (redux) pour partager les datas entre les composants et éviter le props drilling et les appel multiple aux même apis.
+On peut ajouter un store (redux) pour partager les datas entre les composants et éviter le props drilling et les appels multiples aux même apis.
 
-Pour le bonus 2, étant en asynchrone, il faudrait mettre en place un middleware de type "redux-thunk" afin de pouvoir gérer de manière centralisé les loading et responses des api.
+Pour le bonus 2, étant en asynchrone, il faudrait mettre en place un middleware de type "redux-thunk" afin de pouvoir gérer de manière centralisé les loading et responses des apis.
