@@ -21,7 +21,7 @@ On peut supprimer une conversation en cliquant sur la corbeille, mais seulement 
 
 Au click sur une conversations, on est redirigé vers le détail de celle-ci.
 
-On peut voir les message de user courant sur le coté droit, et sur le user distant dans la partie gauche.
+On peut voir les message du user courant sur le coté droit, et sur le user distant sur le coté gauche.
 Le user distant verra son nom apparaitre avant son message, dans le cas ou celui envoi plusieurs message à la suite on affichera seulement son nom sur le premier.
 
 On va pouvoir écrire un text dans le champ prévu en bas de page et au click sur "ENVOYER" le message sera sauvegardé et la conversation rafraichi.
@@ -37,6 +37,6 @@ Dans le swagger fourni les delete retournent des 404 donc impossible de test les
 
 ### Amélioration
 
-On peut ajouter un reducer pour partager les datas entre les composants et éviter le props drilling et les appel multiple aux même apis.
+On peut ajouter un store (redux) pour partager les datas entre les composants et éviter le props drilling et les appel multiple aux même apis.
 
 Pour le bonus 2, étant en asynchrone, il faudrait mettre en place un middleware de type "redux-thunk" afin de pouvoir gérer de manière centralisé les loading et responses des api.
