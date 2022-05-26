@@ -34,6 +34,7 @@ S'il manque une donnée dans l'url on aura un message pour nous dire quoi faire 
 ### Remarques
 
 Dans le swagger fourni les delete retournent des 404 donc impossible de test les suppressions de conversation ou message.
+Je pense que le Middleware empêche l'affichage de la nouvelle conversation lors de l'ajout, quand on restart le back la nouvelle conversation apparait.
 
 ### Amélioration
 
