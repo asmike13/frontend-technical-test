@@ -1,6 +1,7 @@
 .bubble-container {
 	position: relative;
 	display: flex;
+	align-items: baseline;
 
 	.author {
 		position: absolute;

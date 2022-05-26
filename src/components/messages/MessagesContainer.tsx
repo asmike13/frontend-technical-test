@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { getMessagesByConversationId, Message, postMessagesByConversationId } from '../../api/messagesApi';
+import { deleteMessageById, getMessagesByConversationId, Message, postMessagesByConversationId } from '../../api/messagesApi';
 import { getAllUsers, User } from '../../api/usersApi';
 import Messages from './Messages';
 
@@ -53,6 +53,10 @@ const MessagesContainer = ({
 		});
 	};
 
+	const onDeleteMessage = (messageId: number) => {
+		deleteMessageById({ messageId });
+	}
+
 	const props = {
 		messages: messages.map((m, i) => ({
 			...m,
@@ -65,6 +69,7 @@ const MessagesContainer = ({
 		senderNickname,
 		recipientNickname,
 		onSendMessage,
+		onDeleteMessage,
 	};
 
 	return <Messages {...props} />;

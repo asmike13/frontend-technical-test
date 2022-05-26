@@ -26,5 +26,5 @@ export const postMessagesByConversationId = (payload: { message: MessageBody, co
 }
 
 export const deleteMessageById = (payload: { messageId: number }) => {
-	return axios.delete(`${baseUrl}/messages/${payload.messageId}`);
+	return axios.delete(`${baseUrl}/message/${payload.messageId}`);
 }
