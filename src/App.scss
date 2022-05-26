@@ -26,3 +26,23 @@ html {
 		}
 	}
 }
+
+.users-container {
+	display: flex;
+	justify-content: center;
+
+	button {
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+
+	button,
+	a {
+		margin: 15px;
+
+		.MuiAvatar-root {
+			margin: 5px auto;
+		}
+	}
+}

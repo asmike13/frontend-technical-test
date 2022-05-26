@@ -13,7 +13,10 @@ export interface Conversation {
 
 export interface ConversationBody {
 	senderId: number
+	senderNickname: string
 	recipientId: number
+	recipientNickname: string
+	lastMessageTimestamp: number
 }
 
 export const getConversationByUserId = (payload: { userId: number }) => {

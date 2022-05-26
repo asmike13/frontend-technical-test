@@ -9,6 +9,9 @@
 			"choose user": "Voir les discutions de quel user ?",
 			"conversations": "Conversations de",
 			"fromTo": "De {{from}} à {{to}}",
+			"add conversation": "Ajouter une conversation à {{name}}",
+			"new conversation": "Ajouter une conversation avec",
+			"cancel": "Annuler",
 			"send": "Envoyer"
 		}
 	}

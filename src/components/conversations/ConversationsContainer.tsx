@@ -1,7 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Conversation, getConversationByUserId } from '../../api/conversationsApi';
-import { getUserById, User } from '../../api/usersApi';
+import moment from 'moment';
+import { Conversation, getConversationByUserId, postConversationByUserId } from '../../api/conversationsApi';
+import { getAllUsers, getUserById, User } from '../../api/usersApi';
 import Conversations from './Conversations';
 
 interface ConversationsContainerProps {
@@ -17,6 +18,28 @@ const ConversationsContainer = ({
 
 	const [conversations, setConversations] = React.useState<Conversation[]>([]);
 	const [user, setUser] = React.useState<User | undefined>();
+	const [users, setUsers] = React.useState<User[]>([]);
+
+	const onClickNewDiscution = () => {
+		users.length === 0 && getAllUsers()
+			.then((response) => {
+				const data = response.data as User[];
+				setUsers(data);
+			})
+	};
+
+	const createNewDiscution = (u: User) => {
+		postConversationByUserId({
+			conversation: {
+				senderId: Number(userId),
+				senderNickname: users.find((findUser) => findUser.id === Number(userId))?.nickname || '',
+				recipientId: u.id,
+				recipientNickname: u.nickname,
+				lastMessageTimestamp: moment().unix(),
+			},
+			userId: Number(userId),
+		})
+	};
 
 	React.useEffect(() => {
 		getConversationByUserId({ userId: Number(userId) })
@@ -41,7 +64,10 @@ const ConversationsContainer = ({
 		conversations,
 		userNickname: user?.nickname || '',
 		userId,
+		users,
 		onMessagesSelection,
+		onClickNewDiscution,
+		createNewDiscution,
 	};
 
 	return <Conversations {...props} />;
