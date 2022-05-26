@@ -14,7 +14,8 @@ const ConversationsContainer = ({
 	setSenderNickname,
 	setRecipientNickname,
 }: ConversationsContainerProps) => {
-	const { userId } = useParams();
+	const { userId: uid } = useParams();
+	const userId = Number(uid);
 
 	const [conversations, setConversations] = React.useState<Conversation[]>([]);
 	const [user, setUser] = React.useState<User | undefined>();
@@ -31,13 +32,13 @@ const ConversationsContainer = ({
 	const createNewConversation = (u: User) => {
 		postConversationByUserId({
 			conversation: {
-				senderId: Number(userId),
-				senderNickname: users.find((findUser) => findUser.id === Number(userId))?.nickname || '',
+				senderId: userId,
+				senderNickname: users.find((findUser) => findUser.id === userId)?.nickname || '',
 				recipientId: u.id,
 				recipientNickname: u.nickname,
 				lastMessageTimestamp: moment().unix(),
 			},
-			userId: Number(userId),
+			userId: userId,
 		})
 	};
 
@@ -48,13 +49,13 @@ const ConversationsContainer = ({
 	};
 
 	React.useEffect(() => {
-		getConversationByUserId({ userId: Number(userId) })
+		getConversationByUserId({ userId })
 			.then((response) => {
 				const data = response.data as Conversation[];
 				setConversations(data);
 			})
 
-		getUserById({ userId: Number(userId) })
+		getUserById({ userId })
 			.then((response) => {
 				const data = response.data as User;
 				setUser(data);

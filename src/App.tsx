@@ -9,7 +9,7 @@ import { setLangage } from './i18next';
 import Home from './components/home/HomeContainer';
 import Conversations from './components/conversations/ConversationsContainer';
 import Messages from './components/messages/MessagesContainer';
-import NotFound from './components/404/NotFound';
+import NotFound from './components/commons/404/NotFound';
 // @ts-ignore
 import localization from 'moment/locale/fr';
 

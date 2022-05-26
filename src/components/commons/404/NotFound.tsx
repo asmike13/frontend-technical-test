@@ -4,7 +4,7 @@ const NotFound = ({ text }: { text?: string }) => {
 	const { t } = useTranslation();
 
 	return (
-		<div>{text || t("not found")}</div>
+		<div data-testid="not-found">{text || t("not found")}</div>
 	)
 };
 

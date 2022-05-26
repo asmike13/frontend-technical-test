@@ -18,7 +18,7 @@ export interface IConversationsProps {
 	onClickNewConversation: () => void
 	createNewConversation: (user: User) => void
 	deleteConversation: (conversationId: number) => void
-	userId?: string
+	userId?: number
 	users?: User[]
 }
 
@@ -43,7 +43,7 @@ const Conversations = ({
 				<span>{t('conversations', { userNickname })}</span>
 			</div>
 
-			<Button onClick={() => {
+			<Button data-testid="add-conversation" onClick={() => {
 				setNewConversation(!newConversation)
 				!newConversation && onClickNewConversation()
 			}}>
@@ -52,10 +52,10 @@ const Conversations = ({
 			</Button>
 
 			{newConversation && users && users.length > 0 && (
-				<div>
+				<div data-testid="users-list">
 					{t("new conversation")}
 					<div className="users-container">
-						{users.map((u) => u.id !== Number(userId) && (
+						{users.map((u) => u.id !== userId && (
 							<button onClick={() => createNewConversation(u)} key={u.id}>
 								<Avatar str={u.nickname} />
 								{u.nickname}
@@ -81,7 +81,7 @@ const Conversations = ({
 
 							<Grid item xs={12} sm={5} className='conversation-time'>
 								<i>{moment(c.lastMessageTimestamp).fromNow()}</i>
-								{c.senderId === Number(userId) && (
+								{c.senderId === userId && (
 									<DeleteIcon onClick={(e) => {
 										e.preventDefault()
 										deleteConversation(c.id);
