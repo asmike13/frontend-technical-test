@@ -27,16 +27,6 @@ const MessagesContainer = ({
 			})
 	}
 
-	React.useEffect(() => {
-		getAllUsers()
-			.then((response) => {
-				const data = response.data as User[];
-				setUsers(data);
-			})
-
-		getMessages();
-	}, []);
-
 	const onSendMessage = (body: string) => {
 		postMessagesByConversationId({
 			message: {
@@ -56,6 +46,16 @@ const MessagesContainer = ({
 	const onDeleteMessage = (messageId: number) => {
 		deleteMessageById({ messageId });
 	}
+
+	React.useEffect(() => {
+		getAllUsers()
+			.then((response) => {
+				const data = response.data as User[];
+				setUsers(data);
+			})
+
+		getMessages();
+	}, []);
 
 	const props = {
 		messages: messages.map((m, i) => ({

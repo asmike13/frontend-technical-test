@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 // Code from https://stackoverflow.com/questions/3426404/create-a-hexadecimal-colour-based-on-a-string-with-javascript
 export const stringToColour = (str: string) => {
@@ -18,8 +18,4 @@ export const stringToColour = (str: string) => {
 	return colour;
 }
 
-export const renderWithRouter = (element: JSX.Element) => (
-	render(
-		<Router>{element}</Router>
-	)
-);
+export const renderWithRouter = (element: JSX.Element) => render(<Router>{element}</Router>);

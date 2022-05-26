@@ -48,6 +48,11 @@ const ConversationsContainer = ({
 		})
 	};
 
+	const onMessagesSelection = (conversation: Conversation) => {
+		setSenderNickname(conversation.senderNickname);
+		setRecipientNickname(conversation.recipientNickname);
+	}
+
 	React.useEffect(() => {
 		getConversationByUserId({ userId })
 			.then((response) => {
@@ -60,12 +65,7 @@ const ConversationsContainer = ({
 				const data = response.data as User;
 				setUser(data);
 			})
-	}, []);
-
-	const onMessagesSelection = (conversation: Conversation) => {
-		setSenderNickname(conversation.senderNickname);
-		setRecipientNickname(conversation.recipientNickname);
-	}
+	}, [userId]);
 
 	const props = {
 		conversations,
