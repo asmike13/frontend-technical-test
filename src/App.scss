@@ -12,4 +12,16 @@ html {
 
 .App {
 	text-align: center;
+
+	.header {
+		display: flex;
+		justify-content: center;
+		margin-top: 15px;
+		text-transform: capitalize;
+		align-items: center;
+
+		svg {
+			margin-right: 10px;
+		}
+	}
 }

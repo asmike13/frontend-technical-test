@@ -4,9 +4,11 @@
 			"nav.home": "Home",
 			"nav.conversations": "Conversations",
 			"not found": "Page introuvable",
-			"no senderId": "Selectionnez un utilisateur sur la page Home",
+			"no userId": "Selectionnez un utilisateur sur la page Home",
 			"no conversationId": "Selectionnez une conversation sur la page conversation",
-			"lastMessageTimestamp": "Dernier message"
+			"conversations": "Conversations de",
+			"fromTo": "De {{from}} à {{to}}",
+			"lastMessageTimestamp": "Il y a"
 		}
 	}
 }

@@ -4,10 +4,9 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import moment from 'moment';
 import { Button, Container } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
-import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import { setLangage } from './i18next';
 
-import Home from './components/home/Home';
+import Home from './components/home/HomeContainer';
 import Conversations from './components/conversations/ConversationsContainer';
 import Messages from './components/messages/MessagesContainer';
 import NotFound from './components/404/NotFound';
@@ -26,9 +25,6 @@ const App = () => {
 				<header>
 					<Link to="/">
 						<Button startIcon={<HomeIcon />}>{t("nav.home")}</Button>
-					</Link>
-					<Link to="/conversations">
-						<Button startIcon={<QuestionAnswerIcon />}>{t('nav.conversations')}</Button>
 					</Link>
 				</header>
 				<Container fixed>

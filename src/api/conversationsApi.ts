@@ -12,6 +12,7 @@ export interface Conversation {
 }
 
 export interface ConversationBody {
+	senderId: number
 	recipientId: number
 }
 
