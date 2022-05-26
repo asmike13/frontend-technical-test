@@ -19,6 +19,19 @@ setLangage('fr');
 const App = () => {
 	const { t } = useTranslation();
 
+	const [senderNickname, setSenderNickname] = React.useState('');
+	const [recipientNickname, setRecipientNickname] = React.useState('');
+
+	const conversationsProps = {
+		setSenderNickname,
+		setRecipientNickname,
+	};
+
+	const messagesProps = {
+		senderNickname,
+		recipientNickname,
+	};
+
 	return (
 		<div className="App">
 			<Router>
@@ -31,9 +44,9 @@ const App = () => {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/conversations" element={<NotFound text={t('no userId')} />} />
-						<Route path="/conversations/:userId" element={<Conversations />} />
+						<Route path="/conversations/:userId" element={<Conversations {...conversationsProps} />} />
 						<Route path="/messages" element={<NotFound text={t('no conversationId')} />} />
-						<Route path="/messages/:conversationId" element={<Messages />} />
+						<Route path="/messages/:conversationId" element={<Messages {...messagesProps} />} />
 						<Route path="" element={<NotFound />} />
 					</Routes>
 				</Container>

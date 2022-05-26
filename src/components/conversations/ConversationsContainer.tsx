@@ -4,7 +4,15 @@ import { Conversation, getConversationByUserId } from '../../api/conversationsAp
 import { getUserById, User } from '../../api/usersApi';
 import Conversations from './Conversations';
 
-const ConversationsContainer = () => {
+interface ConversationsContainerProps {
+	setSenderNickname: React.Dispatch<React.SetStateAction<string>>;
+	setRecipientNickname: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const ConversationsContainer = ({
+	setSenderNickname,
+	setRecipientNickname,
+}: ConversationsContainerProps) => {
 	const { userId } = useParams();
 
 	const [conversations, setConversations] = React.useState<Conversation[]>([]);
@@ -24,9 +32,15 @@ const ConversationsContainer = () => {
 			})
 	}, [userId]);
 
+	const onMessagesSelection = (conversation: Conversation) => {
+		setSenderNickname(conversation.senderNickname);
+		setRecipientNickname(conversation.recipientNickname);
+	}
+
 	const props = {
 		conversations,
 		userNickname: user?.nickname || '',
+		onMessagesSelection,
 	};
 
 	return <Conversations {...props} />;

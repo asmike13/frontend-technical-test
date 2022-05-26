@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Grid } from '@mui/material';
 import { Conversation } from '../../api/conversationsApi';
-import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import Avatar from '../commons/Avatar';
 
 import './styles.scss';
@@ -12,25 +12,27 @@ import './styles.scss';
 interface IConversationsProps {
 	conversations: Conversation[]
 	userNickname: string
+	onMessagesSelection: (conversation: Conversation) => void
 }
 
 const Conversations = ({
 	conversations,
 	userNickname,
+	onMessagesSelection,
 }: IConversationsProps) => {
 	const { t } = useTranslation();
 
 	return (
 		<>
 			<div className="header">
-				<QuestionAnswerIcon />
+				<FormatListBulletedIcon />
 				<span>{t('conversations')} {userNickname}</span>
 			</div>
 
 			<Grid item xs={12} className="conversation-container">
 
 				{conversations.map((c) => (c.senderId &&
-					<Link to={`/messages/${c.id}`} key={c.lastMessageTimestamp}>
+					<Link to={`/messages/${c.id}`} key={c.lastMessageTimestamp} onClick={() => onMessagesSelection(c)}>
 						<Grid container className='conversation' alignItems="center">
 
 							<Grid item xs={3} sm={2}>
