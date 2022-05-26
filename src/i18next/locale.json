@@ -9,7 +9,7 @@
 			"choose user": "Voir les discutions de quel user ?",
 			"conversations": "Conversations de",
 			"fromTo": "De {{from}} à {{to}}",
-			"lastMessageTimestamp": "Il y a"
+			"send": "Envoyer"
 		}
 	}
 }

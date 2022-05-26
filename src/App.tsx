@@ -10,10 +10,12 @@ import Home from './components/home/HomeContainer';
 import Conversations from './components/conversations/ConversationsContainer';
 import Messages from './components/messages/MessagesContainer';
 import NotFound from './components/404/NotFound';
+// @ts-ignore
+import localization from 'moment/locale/fr';
 
 import './App.scss';
 
-moment.locale('fr');
+moment.updateLocale('fr', localization);
 setLangage('fr');
 
 const App = () => {
@@ -47,7 +49,7 @@ const App = () => {
 						<Route path="/conversations/:userId" element={<Conversations {...conversationsProps} />} />
 						<Route path="/messages" element={<NotFound text={t('no conversationId')} />} />
 						<Route path="/messages/:userId/:conversationId" element={<Messages {...messagesProps} />} />
-						<Route path="" element={<NotFound />} />
+						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</Container>
 			</Router>

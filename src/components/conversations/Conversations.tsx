@@ -46,7 +46,7 @@ const Conversations = ({
 							</Grid>
 
 							<Grid item xs={12} sm={5} className='conversation-time'>
-								<i>{t('lastMessageTimestamp')} {moment(c.lastMessageTimestamp).fromNow()}</i>
+								<i>{moment(c.lastMessageTimestamp).fromNow()}</i>
 							</Grid>
 
 						</Grid>

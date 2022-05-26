@@ -1,6 +1,7 @@
+import moment from 'moment';
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { getMessagesByConversationId, Message } from '../../api/messagesApi';
+import { getMessagesByConversationId, Message, postMessagesByConversationId } from '../../api/messagesApi';
 import { getAllUsers, User } from '../../api/usersApi';
 import Messages from './Messages';
 
@@ -18,6 +19,14 @@ const MessagesContainer = ({
 	const [messages, setMessages] = React.useState<Message[]>([]);
 	const [users, setUsers] = React.useState<User[]>([]);
 
+	const getMessages = () => {
+		getMessagesByConversationId({ conversationId: Number(conversationId) })
+			.then((response) => {
+				const data = response.data as Message[];
+				setMessages(data);
+			})
+	}
+
 	React.useEffect(() => {
 		getAllUsers()
 			.then((response) => {
@@ -25,12 +34,24 @@ const MessagesContainer = ({
 				setUsers(data);
 			})
 
-		getMessagesByConversationId({ conversationId: Number(conversationId) })
-			.then((response) => {
-				const data = response.data as Message[];
-				setMessages(data);
-			})
-	}, [userId, conversationId]);
+		getMessages();
+	}, []);
+
+	const onSendMessage = (body: string) => {
+		postMessagesByConversationId({
+			message: {
+				authorId: Number(userId),
+				body,
+				timestamp: moment().unix().toString(),
+				conversationId: Number(conversationId),
+			},
+			conversationId: Number(conversationId),
+		}).then((response) => {
+			if (response.status === 201) {
+				getMessages();
+			}
+		});
+	};
 
 	const props = {
 		messages: messages.map((m, i) => ({
@@ -41,6 +62,7 @@ const MessagesContainer = ({
 		})),
 		senderNickname,
 		recipientNickname,
+		onSendMessage,
 	};
 
 	return <Messages {...props} />;

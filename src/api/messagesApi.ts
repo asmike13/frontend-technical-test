@@ -6,11 +6,13 @@ export interface Message {
 	id: number
 	conversationId: number
 	authorId: number
-	timestamp: string
 	body: string
+	timestamp: string
 }
 
 interface MessageBody {
+	conversationId: number
+	authorId: number
 	body: string
 	timestamp: string
 }

@@ -1,4 +1,6 @@
+import moment from "moment";
 import { CSSProperties } from "react";
+import { useTranslation } from "react-i18next";
 
 import './styles.scss';
 
@@ -12,6 +14,7 @@ interface BubbleProps {
 	body: string
 	authorNickname?: string
 	samePrevious: boolean
+	timestamp: string
 }
 
 const Bubble = ({
@@ -19,13 +22,17 @@ const Bubble = ({
 	body,
 	authorNickname,
 	samePrevious,
+	timestamp,
 }: BubbleProps) => {
+	const { t } = useTranslation();
+
 	const isSender = from === 'sender';
 
 	return (
 		<div className="bubble-container" style={{ justifyContent: isSender ? 'flex-end' : 'flex-start' }}>
 			{!isSender && !samePrevious && <span className="author">{authorNickname}</span>}
 			<div className="bubble" style={bubbleStyle(isSender)}>{body}</div>
+			<i>{moment(Number(timestamp) * 1000).fromNow()}</i>
 		</div >
 	);
 };
