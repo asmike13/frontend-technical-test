@@ -9,6 +9,7 @@ import { setLangage } from './i18next';
 
 import Home from './components/home/Home';
 import Conversations from './components/conversations/ConversationsContainer';
+import Messages from './components/messages/MessagesContainer';
 import NotFound from './components/404/NotFound';
 
 import './App.scss';
@@ -27,15 +28,16 @@ const App = () => {
 						<Button startIcon={<HomeIcon />}>{t("nav.home")}</Button>
 					</Link>
 					<Link to="/conversations">
-						<Button startIcon={<QuestionAnswerIcon />}>{t("nav.conversations")}</Button>
+						<Button startIcon={<QuestionAnswerIcon />}>{t('nav.conversations')}</Button>
 					</Link>
 				</header>
 				<Container fixed>
 					<Routes>
 						<Route path="/" element={<Home />} />
-						<Route path="conversations" element={<Conversations />} >
-							<Route path=":senderId" element={<Conversations />} />
-						</Route>
+						<Route path="/conversations" element={<NotFound text={t('no senderId')} />} />
+						<Route path="/conversations/:senderId" element={<Conversations />} />
+						<Route path="/messages" element={<NotFound text={t('no conversationId')} />} />
+						<Route path="/messages/:conversationId" element={<Messages />} />
 						<Route path="" element={<NotFound />} />
 					</Routes>
 				</Container>

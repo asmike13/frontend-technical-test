@@ -11,11 +11,15 @@ export interface Conversation {
 	lastMessageTimestamp: number
 }
 
+export interface ConversationBody {
+	recipientId: number
+}
+
 export const getConversationByUserId = (payload: { userId: number }) => {
 	return axios.get(`${baseUrl}/conversations/${payload.userId}`);
 }
 
-export const postConversationByUserId = (payload: { conversation: Conversation, userId: number }) => {
+export const postConversationByUserId = (payload: { conversation: ConversationBody, userId: number }) => {
 	return axios.post(`${baseUrl}/conversations/${payload.userId}`, payload.conversation);
 }
 

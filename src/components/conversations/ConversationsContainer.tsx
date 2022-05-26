@@ -9,13 +9,10 @@ const ConversationsContainer = () => {
 	const [conversations, setConversations] = React.useState<Conversation[]>([]);
 
 	React.useEffect(() => {
-		getConversationByUserId({ userId: 1 })
+		getConversationByUserId({ userId: Number(senderId) })
 			.then((response) => {
 				const data = response.data as Conversation[];
-				const filteredData = senderId
-					? data.filter((d) => d.senderId === Number(senderId))
-					: data;
-				setConversations(filteredData as Conversation[]);
+				setConversations(data);
 			})
 	}, [senderId]);
 

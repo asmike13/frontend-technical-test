@@ -4,7 +4,8 @@
 			"nav.home": "Home",
 			"nav.conversations": "Conversations",
 			"not found": "Page introuvable",
-			"no userId": "Selectionnez un utilisateur sur la page Home",
+			"no senderId": "Selectionnez un utilisateur sur la page Home",
+			"no conversationId": "Selectionnez une conversation sur la page conversation",
 			"lastMessageTimestamp": "Dernier message"
 		}
 	}
