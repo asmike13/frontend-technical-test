@@ -12,21 +12,21 @@ Sur chaque page on retrouve un bouton pour retourner sur la homepage.
 
 Sur la homepage on a la possibilité de choisir parmis tous les users présents dans la base.
 
-Au click sur un user, on est redirigé sur la liste des converstion ou ce user apparait.
+Au click sur un user, on est redirigé sur la liste des conversations ou ce user apparait.
 
 On peut ajouter une conversation en cliquant sur "AJOUTER UNE CONVERSATION À X", puis en selectionnant dans la liste le user avec lequel on veut créer une nouvelle conversation.
 Le user actuel ne sera donc pas présent dans cette liste.
 
-On peut supprimer une conversation en cliquant sur la corbeille, mais seulement si on est le user qui a créer la conversation.
+On peut supprimer une conversation en cliquant sur la corbeille, mais seulement si on est le user qui a créé la conversation.
 
-Au click sur une conversations, on est redirigé vers le détail de celle-ci.
+Au click sur une conversation, on est redirigé vers le détail de celle-ci.
 
-On peut voir les message du user courant sur le coté droit, et sur le user distant sur le coté gauche.
-Le user distant verra son nom apparaitre avant son message, dans le cas ou celui envoi plusieurs message à la suite on affichera seulement son nom sur le premier.
+On peut voir les messages du user courant sur le coté droit, et du user distant sur le coté gauche.
+Le user distant verra son nom apparaitre avant son message, dans le cas ou celui envoi plusieurs messages à la suite on affichera seulement son nom sur le premier.
 
-On va pouvoir écrire un text dans le champ prévu en bas de page et au click sur "ENVOYER" le message sera sauvegardé et la conversation rafraichi.
+On va pouvoir écrire un texte dans le champ prévu en bas de page et au click sur "ENVOYER" le message sera sauvegardé et la conversation rafraichi.
 
-Enfin, au click sur le crayon en haut de page, on va passer en mode édition, ce qui vas permettre de pouvoir supprimer des messages en cliquant sur une corbeille qui vas apparaitre seulement pour les messages du user courant.
+Enfin, au click sur le crayon en haut de page, on va passer en mode édition, ce qui vas permettre de pouvoir supprimer des messages en cliquant sur une corbeille qui va apparaitre seulement pour les messages du user courant.
 
 Si on essaye d'aller sur une url qui n'existe pas, on aura un message d'erreur.
 S'il manque une donnée dans l'url on aura un message pour nous dire quoi faire (en général retourner à la page précédente)
