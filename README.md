@@ -1,4 +1,4 @@
-# FRONTEND TECHNICAL TEST LEBONCOIN
+# Frontend technical test leboncoin
 
 Faire une application qui contient les fonctionnalitées suivantes :
 - Choix d'un user
