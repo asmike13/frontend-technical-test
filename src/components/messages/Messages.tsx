@@ -33,7 +33,7 @@ const Messages = ({
 	const [editMode, setEditMode] = React.useState(false);
 
 	return (
-		<>
+		<div className="messages-container">
 
 			<div className="header">
 				<QuestionAnswerIcon />
@@ -54,7 +54,7 @@ const Messages = ({
 				</Grid>
 
 			</Grid>
-		</>
+		</div>
 	)
 }
 
