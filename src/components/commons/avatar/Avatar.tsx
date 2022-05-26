@@ -1,5 +1,5 @@
 import { Avatar as MuiAvatar } from '@mui/material';
-import { stringToColour } from '../../helpers';
+import { stringToColour } from '../../../helpers';
 
 interface IAvatar {
 	str: string

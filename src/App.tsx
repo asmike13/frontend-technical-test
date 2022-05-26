@@ -46,7 +46,7 @@ const App = () => {
 						<Route path="/conversations" element={<NotFound text={t('no userId')} />} />
 						<Route path="/conversations/:userId" element={<Conversations {...conversationsProps} />} />
 						<Route path="/messages" element={<NotFound text={t('no conversationId')} />} />
-						<Route path="/messages/:conversationId" element={<Messages {...messagesProps} />} />
+						<Route path="/messages/:userId/:conversationId" element={<Messages {...messagesProps} />} />
 						<Route path="" element={<NotFound />} />
 					</Routes>
 				</Container>

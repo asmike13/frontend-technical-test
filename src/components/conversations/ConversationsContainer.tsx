@@ -30,7 +30,7 @@ const ConversationsContainer = ({
 				const data = response.data as User;
 				setUser(data);
 			})
-	}, [userId]);
+	}, []);
 
 	const onMessagesSelection = (conversation: Conversation) => {
 		setSenderNickname(conversation.senderNickname);
@@ -40,6 +40,7 @@ const ConversationsContainer = ({
 	const props = {
 		conversations,
 		userNickname: user?.nickname || '',
+		userId,
 		onMessagesSelection,
 	};
 

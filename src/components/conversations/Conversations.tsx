@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Grid } from '@mui/material';
 import { Conversation } from '../../api/conversationsApi';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import Avatar from '../commons/Avatar';
+import Avatar from '../commons/avatar/Avatar';
 
 import './styles.scss';
 
@@ -13,12 +13,14 @@ interface IConversationsProps {
 	conversations: Conversation[]
 	userNickname: string
 	onMessagesSelection: (conversation: Conversation) => void
+	userId?: string
 }
 
 const Conversations = ({
 	conversations,
 	userNickname,
 	onMessagesSelection,
+	userId,
 }: IConversationsProps) => {
 	const { t } = useTranslation();
 
@@ -32,7 +34,7 @@ const Conversations = ({
 			<Grid item xs={12} className="conversation-container">
 
 				{conversations.map((c) => (c.senderId &&
-					<Link to={`/messages/${c.id}`} key={c.lastMessageTimestamp} onClick={() => onMessagesSelection(c)}>
+					<Link to={`/messages/${userId}/${c.id}`} key={c.lastMessageTimestamp} onClick={() => onMessagesSelection(c)}>
 						<Grid container className='conversation' alignItems="center">
 
 							<Grid item xs={3} sm={2}>

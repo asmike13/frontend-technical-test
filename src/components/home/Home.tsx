@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import HomeIcon from '@mui/icons-material/Home';
 import { User } from "../../api/usersApi";
-import Avatar from "../commons/Avatar";
+import Avatar from "../commons/avatar/Avatar";
 import { Link } from "react-router-dom";
 
 import './styles.scss';
@@ -15,15 +15,13 @@ const Home = ({ users }: IHomeProps) => {
 
 	return (
 		<>
-			<div className="header">
-				<HomeIcon />
-				<span>{t('home')}</span>
-			</div>
+			<span>{t('choose user')}</span>
 
 			<div className="users-container">
 				{users.map((u) => (
 					<Link to={`/conversations/${u.id}`} key={u.id}>
 						<Avatar str={u.nickname} />
+						{u.nickname}
 					</Link>
 				))}
 			</div>
