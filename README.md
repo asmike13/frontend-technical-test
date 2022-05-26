@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# FRONTEND TECHNICAL TEST LEBONCOIN
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Faire une application qui contient les fonctionnalitées suivantes :
+- Choix d'un user
+- Choix d'une conversation parmis celle du user choisi
+- Possibilité de supprimer une conversation
+- Liste des messages échangé
+- Possibilité de supprimer un message
+## Cas pratique
 
-## Available Scripts
+Sur chaque page on retrouve un bouton pour retourner sur la homepage.
 
-In the project directory, you can run:
+Sur la homepage on a la possibilité de choisir parmis tous les users présents dans la base.
 
-### `npm start`
+Au click sur un user, on est redirigé sur la liste des converstion ou ce user apparait.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+On peut ajouter une conversation en cliquant sur "AJOUTER UNE CONVERSATION À X", puis en selectionnant dans la liste le user avec lequel on veut créer une nouvelle conversation.
+Le user actuel ne sera donc pas présent dans cette liste.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+On peut supprimer une conversation en cliquant sur la corbeille, mais seulement si on est le user qui a créer la conversation.
 
-### `npm test`
+Au click sur une conversations, on est redirigé vers le détail de celle-ci.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+On peut voir les message de user courant sur le coté droit, et sur le user distant dans la partie gauche.
+Le user distant verra son nom apparaitre avant son message, dans le cas ou celui envoi plusieurs message à la suite on affichera seulement son nom sur le premier.
 
-### `npm run build`
+On va pouvoir écrire un text dans le champ prévu en bas de page et au click sur "ENVOYER" le message sera sauvegardé et la conversation rafraichi.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Enfin, au click sur le crayon en haut de page, on va passer en mode édition, ce qui vas permettre de pouvoir supprimer des messages en cliquant sur une corbeille qui vas apparaitre seulement pour les messages du user courant.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Si on essaye d'aller sur une url qui n'existe pas, on aura un message d'erreur.
+S'il manque une donnée dans l'url on aura un message pour nous dire quoi faire (en général retourner à la page précédente)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Remarques
 
-### `npm run eject`
+Dans le swagger fourni les delete retournent des 404 donc impossible de test les suppressions de conversation ou message.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Amélioration
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+On peut ajouter un reducer pour partager les datas entre les composants et éviter le props drilling et les appel multiple aux même apis.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Pour le bonus 2, étant en asynchrone, il faudrait mettre en place un middleware de type "redux-thunk" afin de pouvoir gérer de manière centralisé les loading et responses des api.
